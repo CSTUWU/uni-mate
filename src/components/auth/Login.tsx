@@ -65,19 +65,19 @@ export default function Login() {
           Welcome Back
         </h1>
         <p className="text-slate-400 text-sm mb-8">
-          Access your academic tracking and institutional data.
+          Access your UWU academic tracking and course data.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Institutional Email */}
           <div>
-            <label className="block text-xs font-semibold text-slate-500 mb-2">Institutional Email</label>
+            <label className="block text-xs font-semibold text-slate-500 mb-2">UWU Student Email</label>
             <AuthInput
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="e.g. s.jobs@university.edu"
+              placeholder="e.g. cst20001@std.uwu.ac.lk"
               required
             />
           </div>
@@ -145,7 +145,7 @@ export default function Login() {
 
       {/* Copyright */}
       <p className="text-[10px] text-slate-400 mt-4 tracking-wider uppercase font-semibold text-center">
-        &copy; 2024 UniMate Precision Systems
+        &copy; 2024 UniMate &bull; Uva Wellassa University
       </p>
     </div>
   );

@@ -51,7 +51,7 @@ export default function TsvSyncModal({
     try {
       setCustomUrl(DEFAULT_GOOGLE_SHEET_TSV_URL);
       await onResetToDefault();
-      setFeedbackMsg("Reset to default university Google Sheet TSV dataset.");
+      setFeedbackMsg("Reset to default UWU Google Sheet TSV dataset.");
     } catch {
       setFeedbackMsg("Failed to reset dataset.");
     } finally {
@@ -67,7 +67,7 @@ export default function TsvSyncModal({
       onClose={onClose}
       icon={<DownloadCloud size={16} />}
       title="Google Sheets TSV Integration"
-      subtitle="Live sync subjects directly from published Google Sheets TSV links"
+      subtitle="Live sync subjects directly from Uva Wellassa University published course sheets"
       maxWidth={500}
     >
       <form onSubmit={handleSyncSubmit} style={{ padding: "18px 18px 0" }}>
@@ -193,7 +193,7 @@ export default function TsvSyncModal({
             style={{ fontSize: 13, opacity: isSubmitting ? 0.5 : 1 }}
           >
             <RotateCcw size={13} />
-            <span>Reset Default Link</span>
+            <span>Reset to Default (UWU)</span>
           </button>
 
           <button

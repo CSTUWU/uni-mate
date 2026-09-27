@@ -87,7 +87,7 @@ export default function Register() {
           </h2>
 
           <p className="text-slate-500 text-[14px] leading-relaxed">
-            Join over 50,000 university students who trust UniMate for GPA tracking, semester planning, and degree verification.
+            The dedicated academic performance tracker for Uva Wellassa University students. Track GPA, plan semesters, and verify honours classifications.
           </p>
         </div>
       </div>
@@ -98,7 +98,7 @@ export default function Register() {
             Create Your Account
           </h1>
           <p className="text-slate-400 text-sm mb-8">
-            Start your journey toward academic precision today.
+            Start tracking your academic journey at Uva Wellassa University.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-5">
@@ -116,13 +116,13 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-500 mb-2">University Email</label>
+              <label className="block text-xs font-semibold text-slate-500 mb-2">UWU Student Email</label>
               <AuthInput
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="j.doe@university.edu"
+                placeholder="e.g. cst20001@std.uwu.ac.lk"
                 icon={<Mail size={16} />}
                 required
               />

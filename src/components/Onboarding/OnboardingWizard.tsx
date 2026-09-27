@@ -3,13 +3,12 @@ import type { DegreeProgram } from "../../types/gpa";
 import { DEFAULT_GOOGLE_SHEET_TSV_URL } from "../../utils/tsvParser";
 import { useDegreePrograms } from "../../hooks/useGpaData";
 import { formatSemester, semesterOptions } from "../../utils/semesterUtils";
-import { GraduationCap, School, CalendarDays, Check, Loader2, BarChart3, ChevronRight, X } from "lucide-react";
+import { GraduationCap, School, CalendarDays, Check, Loader2, BarChart3, ChevronRight } from "lucide-react";
 import Button from "../UI/Button";
 import SearchSelect from "../UI/SearchSelect";
 import type { SelectOption } from "../UI/CustomSelect";
 
 export interface OnboardingResult {
-  university: "uwu" | "other";
   degree: DegreeProgram | null;
   maxSemester: number | null;
 }
@@ -18,21 +17,12 @@ interface OnboardingWizardProps {
   onComplete: (result: OnboardingResult) => void;
 }
 
-const UNI_OPTIONS: SelectOption[] = [
-  { value: "uwu", icon: <School size={15} />, label: "Uva Wellassa University of Sri Lanka" },
-  { value: "other", icon: <X size={15} />, label: "Not in here" },
-];
-
-const STEPS = ["University", "Degree", "Semester"];
+const STEPS = ["Degree", "Semester"];
 
 const STEP_META = [
   {
-    title: "Choose your university",
-    subtitle: "We'll set up your tracker around the subjects you're studying.",
-  },
-  {
     title: "Select your degree programme",
-    subtitle: "Pick the programme you're enrolled in.",
+    subtitle: "Pick the Uva Wellassa University programme you're enrolled in.",
   },
   {
     title: "Where are you in your degree?",
@@ -41,13 +31,12 @@ const STEP_META = [
 ];
 
 const FEATURES = [
-  { icon: <School size={15} />, text: "Live subject sync from your university sheet" },
+  { icon: <School size={15} />, text: "Live subject sync from UWU degree sheets" },
   { icon: <CalendarDays size={15} />, text: "See only the semesters you've reached" },
   { icon: <BarChart3 size={15} />, text: "CGPA, honours classification & analytics" },
 ];
 
 export default function OnboardingWizard({ onComplete }: OnboardingWizardProps) {
-  const [university, setUniversity] = useState("");
   const [degree, setDegree] = useState<DegreeProgram | null>(null);
   const [maxSemester, setMaxSemester] = useState(1.1);
   const [step, setStep] = useState(1);
@@ -65,19 +54,10 @@ export default function OnboardingWizard({ onComplete }: OnboardingWizardProps) 
     icon: <GraduationCap size={15} />,
   }));
 
-  const pickUniversity = (v: string) => {
-    setUniversity(v);
-    if (v === "other") {
-      onComplete({ university: "other", degree: null, maxSemester: null });
-    } else {
-      setStep(2);
-    }
-  };
-
   const pickDegree = (id: string) => {
     const d = discovered.find((x) => x.id === id) ?? null;
     setDegree(d);
-    if (d) setStep(3);
+    if (d) setStep(2);
   };
 
   return (
@@ -108,8 +88,8 @@ export default function OnboardingWizard({ onComplete }: OnboardingWizardProps) 
               <GraduationCap size={18} />
             </div>
             <div>
-              <div style={{ fontSize: 15, fontWeight: 800, letterSpacing: ".01em" }}>UniGPA</div>
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,.55)" }}>Academic Performance Tracker</div>
+              <div style={{ fontSize: 15, fontWeight: 800, letterSpacing: ".01em" }}>UniMate</div>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,.55)" }}>Uva Wellassa University</div>
             </div>
           </div>
 
@@ -120,7 +100,7 @@ export default function OnboardingWizard({ onComplete }: OnboardingWizardProps) 
             Know where you stand.
           </h2>
           <p style={{ fontSize: 13, lineHeight: 1.6, color: "rgba(255,255,255,.65)", margin: "0 0 28px" }}>
-            Your GPA, computed the way your university counts it — semester by semester,
+            Your GPA, computed the way Uva Wellassa University counts it — semester by semester,
             right up to where you are now.
           </p>
 
@@ -144,7 +124,7 @@ export default function OnboardingWizard({ onComplete }: OnboardingWizardProps) 
         </div>
 
         <div style={{ fontSize: 10.5, letterSpacing: ".14em", color: "rgba(255,255,255,.4)", marginTop: 40 }}>
-          PRECISION IN ACADEMIC EXCELLENCE
+          UVA WELLASSA UNIVERSITY · PRECISION IN ACADEMIC EXCELLENCE
         </div>
       </aside>
 
@@ -155,7 +135,7 @@ export default function OnboardingWizard({ onComplete }: OnboardingWizardProps) 
         <div className="onb-pad" style={{ padding: "16px 32px", display: "flex", justifyContent: "center", flexShrink: 0 }}>
           <div style={{ width: "100%", maxWidth: 560, display: "flex", justifyContent: "flex-end" }}>
             <span style={{ fontSize: 12, fontWeight: 600, color: "var(--gray-500)" }}>
-              Step {step} of 3 · {STEPS[stepIndex]}
+              Step {step} of 2 · {STEPS[stepIndex]}
             </span>
           </div>
         </div>
@@ -233,32 +213,22 @@ export default function OnboardingWizard({ onComplete }: OnboardingWizardProps) 
             <p style={{ fontSize: 13, color: "var(--gray-500)", margin: "0 0 24px" }}>{meta.subtitle}</p>
 
             {step === 1 && (
-              <SearchSelect
-                options={UNI_OPTIONS}
-                onChange={pickUniversity}
-                placeholder="Type your university…"
-                footerLabel="Not in here"
-                onFooter={() => onComplete({ university: "other", degree: null, maxSemester: null })}
-              />
-            )}
-
-            {step === 2 && (
               <>
                 <SearchSelect
                   options={degreeOptions}
                   onChange={pickDegree}
-                  placeholder="Type your degree…"
+                  placeholder="Select or search your UWU degree…"
                   loading={degreesQuery.isFetching}
                 />
                 {!degreesQuery.isFetching && discovered.length === 0 && (
                   <p style={{ fontSize: 12, color: "var(--red)", marginTop: 10, display: "flex", alignItems: "center", gap: 6 }}>
-                    <Loader2 size={13} /> Couldn't load the degree list — check your connection, or choose "Not in here" below.
+                    <Loader2 size={13} /> Couldn't load the UWU degree list — check your connection, or set up manually below.
                   </p>
                 )}
               </>
             )}
 
-            {step === 3 && (
+            {step === 2 && (
               <>
                 {/* Semester roadmap — one row per year, tap a semester to select */}
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -339,28 +309,18 @@ export default function OnboardingWizard({ onComplete }: OnboardingWizardProps) 
           <div style={{ flex: 1 }} />
 
           {step === 1 && (
-            <Button
-              variant="primary"
-              onClick={() => { if (university) pickUniversity(university); }}
-              disabled={!university}
-            >
-              Continue <ChevronRight size={15} />
-            </Button>
-          )}
-
-          {step === 2 && (
             <>
-              <Button variant="outline" onClick={() => onComplete({ university: "uwu", degree: null, maxSemester: null })}>
-                Not in here
+              <Button variant="outline" onClick={() => onComplete({ degree: null, maxSemester: null })}>
+                Set up manually
               </Button>
-              <Button variant="primary" onClick={() => { if (degree) setStep(3); }} disabled={!degree}>
+              <Button variant="primary" onClick={() => { if (degree) setStep(2); }} disabled={!degree}>
                 Continue <ChevronRight size={15} />
               </Button>
             </>
           )}
 
-          {step === 3 && (
-            <Button variant="primary" onClick={() => onComplete({ university: "uwu", degree, maxSemester })}>
+          {step === 2 && (
+            <Button variant="primary" onClick={() => onComplete({ degree, maxSemester })}>
               <CalendarDays size={14} /> Start Tracking
             </Button>
           )}

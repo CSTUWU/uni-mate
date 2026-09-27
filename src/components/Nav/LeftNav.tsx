@@ -41,7 +41,7 @@ export default function LeftNav({ activeView, onChangeView }: LeftNavProps) {
         </div>
         <div>
           <div style={{ fontSize: 13, fontWeight: 700, color: "var(--gray-900)", lineHeight: 1 }}>UniMate</div>
-          <div style={{ fontSize: 10, color: "var(--gray-400)", marginTop: 2 }}>GPA Calculator</div>
+          <div style={{ fontSize: 10, color: "var(--blue)", fontWeight: 600, marginTop: 3 }}>Uva Wellassa University</div>
         </div>
       </div>
 

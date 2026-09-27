@@ -38,7 +38,7 @@ const LS_LEGACY         = "unimate_gpa_courses_v2";
 interface PriorGpa { enabled: boolean; cgpa: number; credits: number; }
 
 interface OnboardingRecord {
-  university: "uwu" | "other";
+  university?: "uwu";
   degreeId: string | null;
   maxSemester: number | null;
 }
@@ -119,7 +119,7 @@ export default function Landing() {
   const coursesQuery  = useTsvCourses(tsvUrl);
 
   /* Onboarding limits: only show semesters up to the user's current one */
-  const maxSemester = onboarding?.university === "uwu" ? onboarding.maxSemester : null;
+  const maxSemester = onboarding?.maxSemester ?? null;
 
   /* Resolve the degree matching the current TSV URL (falls back to last selection) */
   const resolvedDegree = tsvUrl ? (allDegrees.find((d) => d.tsvUrl === tsvUrl) ?? activeDegree) : null;
@@ -140,7 +140,7 @@ export default function Landing() {
 
   /* ── Actions ── */
   const completeOnboarding = (r: OnboardingResult) => {
-    setOnboarding({ university: r.university, degreeId: r.degree?.id ?? null, maxSemester: r.maxSemester });
+    setOnboarding({ university: "uwu", degreeId: r.degree?.id ?? null, maxSemester: r.maxSemester });
     if (r.degree) {
       setActiveDegree(r.degree);
       setTsvUrl(r.degree.tsvUrl);

@@ -34,6 +34,7 @@ export function generateGpaCsv(options: ExportGpaCsvOptions): string {
 
   // Summary header block
   rows.push(toCsvRow(["GPA & Course Academic Summary Report"]));
+  rows.push(toCsvRow(["University", "Uva Wellassa University of Sri Lanka"]));
   rows.push(toCsvRow(["Generated At", new Date().toLocaleString()]));
   if (degree) {
     rows.push(toCsvRow(["Degree Program", degree.name ? `${degree.code} - ${degree.name}` : degree.code]));
