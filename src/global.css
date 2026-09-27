@@ -139,6 +139,27 @@ body {
 }
 .left-nav::-webkit-scrollbar { width: 0; }
 
+.nav-brand-link {
+  transition: opacity 0.15s ease;
+}
+.nav-brand-link:hover {
+  opacity: 0.82;
+}
+
+.mobile-header-logo {
+  display: none;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 8px;
+  flex-shrink: 0;
+  transition: opacity 0.15s ease;
+}
+.mobile-header-logo:hover {
+  opacity: 0.82;
+}
+
 .nav-section-label {
   font-size: 10px;
   font-weight: 700;
@@ -415,6 +436,7 @@ input[type="range"] { accent-color: var(--blue); cursor: pointer; }
   .col-left, .col-right { flex: 1 1 100%; }
   .col-right { position: static; }
   .left-nav { display: none; }
+  .mobile-header-logo { display: flex; }
 }
 
 /* ─── Onboarding wizard ───────────────────────────────── */

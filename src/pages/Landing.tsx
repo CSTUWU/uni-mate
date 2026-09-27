@@ -299,6 +299,7 @@ export default function Landing() {
         onOpenSyncModal={() => setSyncOpen(true)}
         onSelectDegreeProgram={selectDegree}
         onResetAll={resetGrades}
+        onNavigateHome={() => setActiveView("calculator")}
       />
 
       {/* ══ APP SHELL: left-nav + content-area ══ */}

@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import CustomSelect from "../UI/CustomSelect";
 import type { SelectOption } from "../UI/CustomSelect";
-import { RefreshCw, RotateCcw } from "lucide-react";
+import { RefreshCw, RotateCcw, GraduationCap } from "lucide-react";
 import type { TsvSyncState, DegreeProgram } from "../../types/gpa";
 import Button from "../UI/Button";
 
@@ -9,9 +10,10 @@ interface NavbarProps {
   onOpenSyncModal: () => void;
   onSelectDegreeProgram: (d: DegreeProgram) => void;
   onResetAll: () => void;
+  onNavigateHome?: () => void;
 }
 
-export default function Navbar({ tsvState, onOpenSyncModal, onSelectDegreeProgram, onResetAll }: NavbarProps) {
+export default function Navbar({ tsvState, onOpenSyncModal, onSelectDegreeProgram, onResetAll, onNavigateHome }: NavbarProps) {
   const subjectLabel = `${tsvState.courseCount} subject${tsvState.courseCount === 1 ? "" : "s"}`;
   const degreeOptions: SelectOption[] = (tsvState.availableDegrees || []).map((d) => {
     const isActive = d.id === tsvState.activeDegree?.id;
@@ -31,6 +33,25 @@ export default function Navbar({ tsvState, onOpenSyncModal, onSelectDegreeProgra
 
   return (
     <header className="app-header" style={{ paddingLeft: 16 }}>
+      {/* Mobile brand logo (visible on mobile where left-nav is hidden) */}
+      <Link
+        to="/"
+        onClick={onNavigateHome}
+        className="mobile-header-logo"
+        aria-label="UniMate Home"
+      >
+        <div
+          style={{
+            width: 28, height: 28, borderRadius: "var(--r)",
+            background: "var(--blue-bg)", border: "1px solid var(--blue-border)",
+            display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+          }}
+        >
+          <GraduationCap size={15} color="var(--blue)" strokeWidth={2.5} />
+        </div>
+        <span style={{ fontSize: 13, fontWeight: 700, color: "var(--gray-900)" }}>UniMate</span>
+      </Link>
+
       {/* Degree selector */}
       <div style={{ display: "flex", alignItems: "center", gap: 8, flex: "0 0 auto" }}>
         <span style={{ fontSize: 12, color: "var(--gray-400)", flexShrink: 0 }}>Programme</span>

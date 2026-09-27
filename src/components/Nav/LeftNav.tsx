@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Calculator, BarChart2, BookOpen, Settings, GraduationCap } from "lucide-react";
 
 export type NavView = "calculator" | "analytics" | "grade-scale";
@@ -24,10 +25,15 @@ export default function LeftNav({ activeView, onChangeView }: LeftNavProps) {
   return (
     <nav className="left-nav" aria-label="Main navigation">
       {/* Brand strip */}
-      <div
+      <Link
+        to="/"
+        onClick={() => onChangeView("calculator")}
+        className="nav-brand-link"
+        aria-label="UniMate Home"
         style={{
           display: "flex", alignItems: "center", gap: 9,
           padding: "8px 14px 16px", borderBottom: "1px solid var(--gray-200)", marginBottom: 8,
+          textDecoration: "none", color: "inherit", cursor: "pointer",
         }}
       >
         <div
@@ -43,7 +49,7 @@ export default function LeftNav({ activeView, onChangeView }: LeftNavProps) {
           <div style={{ fontSize: 13, fontWeight: 700, color: "var(--gray-900)", lineHeight: 1 }}>UniMate</div>
           <div style={{ fontSize: 10, color: "var(--blue)", fontWeight: 600, marginTop: 3 }}>Uva Wellassa University</div>
         </div>
-      </div>
+      </Link>
 
       {/* Nav items */}
       {NAV_ITEMS.map((item, idx) => {

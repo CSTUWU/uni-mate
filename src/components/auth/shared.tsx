@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Calculator } from "lucide-react";
 import type { InputHTMLAttributes, ReactNode } from "react";
 
@@ -10,12 +11,16 @@ const inputClass =
 /** UniMate logo + wordmark row */
 export function BrandLogo({ size = 18, className = "" }: { size?: number; className?: string }) {
   return (
-    <div className={`flex items-center gap-2 font-heading font-extrabold text-primary ${className}`}>
+    <Link
+      to="/"
+      className={`flex items-center gap-2 font-heading font-extrabold text-primary hover:opacity-90 transition-opacity cursor-pointer ${className}`}
+      aria-label="UniMate Home"
+    >
       <div className="w-8 h-8 rounded-lg bg-primary-soft text-primary flex items-center justify-center">
         <Calculator size={size} strokeWidth={2.5} />
       </div>
       <span>UniMate</span>
-    </div>
+    </Link>
   );
 }
 
