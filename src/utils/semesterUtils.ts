@@ -24,7 +24,7 @@ export function parseSemesterCode(raw: string | number): number {
   return round1(num);
 }
 
-/** "Year 1 · Semester 2" — plain integers render as "Semester 1". */
+/** "Year 1 · Semester 2" - plain integers render as "Semester 1". */
 export function formatSemester(sem: number): string {
   const year = semesterToYear(sem);
   const term = semesterToTerm(sem);

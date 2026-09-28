@@ -131,7 +131,7 @@ export default function CustomSelect({
         <ChevronDown size={13} className={`csel-chevron${open ? " open" : ""}`} />
       </button>
 
-      {/* Dropdown — portalled to body so it never gets clipped by scroll containers */}
+      {/* Dropdown - portalled to body so it never gets clipped by scroll containers */}
       {open && pos && createPortal(
         <div
           ref={dropRef}

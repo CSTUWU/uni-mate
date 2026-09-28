@@ -110,7 +110,7 @@ export default function AnalyticsView({ courses, stats }: AnalyticsViewProps) {
                       return (
                         <div key={s.semesterNumber} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
                           <span style={{ fontSize: 10, fontWeight: 700, color: col }}>
-                            {s.earnedCredits > 0 ? s.gpa.toFixed(2) : "—"}
+                            {s.earnedCredits > 0 ? s.gpa.toFixed(2) : "-"}
                           </span>
                           <div style={{ width: "100%", height: `${h}%`, background: col, borderRadius: "4px 4px 0 0", transition: "height 0.5s ease", minHeight: 4 }} />
                         </div>

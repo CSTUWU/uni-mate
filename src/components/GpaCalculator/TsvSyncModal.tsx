@@ -111,7 +111,7 @@ export default function TsvSyncModal({
         <FormField
           label="Degree Name (optional)"
           htmlFor="degree-name"
-          hint="Used when the sheet is not auto-discoverable — name your own degree."
+          hint="Used when the sheet is not auto-discoverable - name your own degree."
           marginBottom={18}
           labelGap={6}
         >

@@ -48,7 +48,7 @@ function writeFetchedCache(url: string, data: Course[]) {
     map[url] = { data, ts: Date.now() };
     localStorage.setItem(LS_FETCHED_CACHE, JSON.stringify(map));
   } catch {
-    /* storage full / unavailable — cache is best-effort */
+    /* storage full / unavailable - cache is best-effort */
   }
 }
 
@@ -73,7 +73,7 @@ export function useDegreePrograms(baseUrl: string | null) {
  * Raw course list for a TSV URL. Data is cached in-memory (TanStack) and
  * persisted to localStorage, so revisiting a degree or reloading the page
  * serves the cache instead of hitting Google Sheets again. Stale cached
- * data refreshes in the background; "Sync Subjects" refetches explicitly.
+ * data refreshes in the background.
  */
 export function useTsvCourses(tsvUrl: string | null) {
   const cached = useMemo(() => (tsvUrl ? readFetchedCache(tsvUrl) : undefined), [tsvUrl]);

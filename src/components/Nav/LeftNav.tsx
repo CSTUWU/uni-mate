@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
-import { Calculator, BarChart2, BookOpen, Settings, GraduationCap } from "lucide-react";
+import { Calculator, BarChart2, BookOpen, Settings } from "lucide-react";
+import BrandLockup from "../UI/BrandLockup";
+import ProgrammeSelect from "./ProgrammeSelect";
+import type { TsvSyncState, DegreeProgram } from "../../types/gpa";
 
 export type NavView = "calculator" | "analytics" | "grade-scale";
 
@@ -18,38 +20,20 @@ const NAV_ITEMS: NavItem[] = [
 
 interface LeftNavProps {
   activeView: NavView;
+  open: boolean;
+  tsvState: TsvSyncState;
+  onSelectDegreeProgram: (d: DegreeProgram) => void;
   onChangeView: (view: NavView) => void;
 }
 
-export default function LeftNav({ activeView, onChangeView }: LeftNavProps) {
+export default function LeftNav({ activeView, open, tsvState, onSelectDegreeProgram, onChangeView }: LeftNavProps) {
   return (
-    <nav className="left-nav" aria-label="Main navigation">
+    <nav id="left-nav" className={`left-nav${open ? " open" : ""}`} aria-label="Main navigation">
       {/* Brand strip */}
-      <Link
-        to="/"
-        onClick={() => onChangeView("calculator")}
-        className="nav-brand-link"
-        aria-label="UniMate Home"
-        style={{
-          display: "flex", alignItems: "center", gap: 9,
-          padding: "8px 14px 16px", borderBottom: "1px solid var(--gray-200)", marginBottom: 8,
-          textDecoration: "none", color: "inherit", cursor: "pointer",
-        }}
-      >
-        <div
-          style={{
-            width: 30, height: 30, borderRadius: "var(--r)",
-            background: "var(--blue-bg)", border: "1px solid var(--blue-border)",
-            display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-          }}
-        >
-          <GraduationCap size={16} color="var(--blue)" strokeWidth={2.5} />
-        </div>
-        <div>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "var(--gray-900)", lineHeight: 1 }}>UniMate</div>
-          <div style={{ fontSize: 10, color: "var(--blue)", fontWeight: 600, marginTop: 3 }}>Uva Wellassa University</div>
-        </div>
-      </Link>
+      <BrandLockup link onClick={() => onChangeView("calculator")} className="nav-brand-link" />
+
+      {/* Programme selector - lives in the nav so it works on desktop and in the mobile drawer */}
+      <ProgrammeSelect tsvState={tsvState} onSelect={onSelectDegreeProgram} />
 
       {/* Nav items */}
       {NAV_ITEMS.map((item, idx) => {

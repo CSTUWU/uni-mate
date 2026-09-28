@@ -21,7 +21,7 @@ interface SemesterCardProps {
 
 /* Build grade options for CustomSelect */
 const GRADE_SELECT_OPTIONS: SelectOption[] = [
-  { value: "Pending", label: "— Select —", badge: "b-gray", badgeLabel: "—" },
+  { value: "Pending", label: "- Select -", badge: "b-gray", badgeLabel: "-" },
   ...GRADE_OPTIONS.map((g) => ({
     value: g.letter,
     label: g.letter,
@@ -71,7 +71,7 @@ export default function SemesterCard({
           <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
             <Award size={12} style={{ color: gpaColor }} />
             <span style={{ fontSize: 17, fontWeight: 700, color: gpaColor, fontVariantNumeric: "tabular-nums" }}>
-              {summary.earnedCredits > 0 ? summary.gpa.toFixed(2) : "—"}
+              {summary.earnedCredits > 0 ? summary.gpa.toFixed(2) : "-"}
             </span>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function SemesterCard({
         <>
           {courses.length === 0 ? (
             <div style={{ padding: "24px 14px", textAlign: "center", color: "var(--gray-400)", fontSize: 13 }}>
-              No subjects yet —{" "}
+              No subjects yet -{" "}
               <button
                 onClick={() => onOpenAddCourseModal(semesterNumber)}
                 style={{ color: "var(--blue)", fontWeight: 600, background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", textDecoration: "underline" }}

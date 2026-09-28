@@ -90,7 +90,7 @@ export default function GpaDashboard({
         </div>
         <div style={{ padding: "4px 0" }}>
           {[
-            { icon: <TrendingUp size={14} style={{ color: "var(--blue)" }} />,   label: "Semester GPA",     val: stats.earnedCredits > 0 ? stats.cgpa.toFixed(2) : "—" },
+            { icon: <TrendingUp size={14} style={{ color: "var(--blue)" }} />,   label: "Semester GPA",     val: stats.earnedCredits > 0 ? stats.cgpa.toFixed(2) : "-" },
             { icon: <BookOpen size={14} style={{ color: "var(--green)" }} />,    label: "Credits Earned",   val: `${displayEarned} / ${displayTotal}` },
             { icon: <CheckCircle2 size={14} style={{ color: "var(--amber)" }} />, label: "Subjects Graded",  val: `${stats.gradedCoursesCount} / ${stats.totalCoursesCount}` },
             { icon: <Target size={14} style={{ color: "var(--red)" }} />,        label: "Quality Points",   val: totalQp.toFixed(1) },
@@ -154,7 +154,7 @@ export default function GpaDashboard({
                   </strong>{" "}
                   average over your next{" "}
                   <strong>{remCredits}</strong> credits
-                  {impossible ? " — unattainable without exceeding 4.0 maximum." : "."}
+                  {impossible ? " - unattainable without exceeding 4.0 maximum." : "."}
                 </span>
               </div>
             )}

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 
 /**
- * useState synced with localStorage — value is read once from the given key
+ * useState synced with localStorage - value is read once from the given key
  * (falling back to `initial`) and written back on every change.
  */
 export function usePersistedState<T>(
@@ -14,7 +14,7 @@ export function usePersistedState<T>(
       const raw = localStorage.getItem(key);
       if (raw != null) return JSON.parse(raw) as T;
     } catch {
-      /* corrupt value — fall through to initial */
+      /* corrupt value - fall through to initial */
     }
     return initial();
   });
@@ -23,7 +23,7 @@ export function usePersistedState<T>(
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch {
-      /* storage unavailable — ignore */
+      /* storage unavailable - ignore */
     }
   }, [key, value]);
 

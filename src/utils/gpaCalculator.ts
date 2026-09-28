@@ -1,7 +1,7 @@
 import type { Course, GradeOption, GpaStats, SemesterSummary } from "../types/gpa";
 
 /* ──────────────────────────────────────────────────────────
-   Grade Options — colour tokens align to spec success/warning/danger
+   Grade Options - colour tokens align to spec success/warning/danger
    ────────────────────────────────────────────────────────── */
 export const GRADE_OPTIONS: GradeOption[] = [
   {
@@ -111,7 +111,7 @@ export function getGpaStatusColor(gpa: number): string {
 }
 
 /* ──────────────────────────────────────────────────────────
-   Grade helpers — single source for grade → colour/band maps
+   Grade helpers - single source for grade → colour/band maps
    ────────────────────────────────────────────────────────── */
 /** CSS colour for a grade's quality points (success / warning / danger) */
 export function getGradeStatusColor(points: number): string {
@@ -251,7 +251,7 @@ export function getHonorsClassification(
     };
   }
   return {
-    label: "Below Passing — Action Required",
+    label: "Below Passing - Action Required",
     badgeClass: "badge-danger",
   };
 }
