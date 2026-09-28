@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Bug report
+    url: https://github.com/CSTUWU/uni-mate/issues/new?template=bug_report.md
+    about: Something in UniMate behaves incorrectly
+  - name: Feature request
+    url: https://github.com/CSTUWU/uni-mate/issues/new?template=feature_request.md
+    about: Suggest new capability or changed behaviour
+  - name: Security vulnerability
+    url: https://github.com/CSTUWU/uni-mate/security/advisories/new
+    about: Report privately — please do not open a public issue
+  - name: Support
+    url: https://github.com/CSTUWU/uni-mate/blob/main/SUPPORT.md
+    about: Troubleshooting steps and known limitations

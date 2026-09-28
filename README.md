@@ -23,6 +23,7 @@ leaves your device.
 - [Grading and calculation](#grading-and-calculation)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
+- [Project governance](#project-governance)
 
 ---
 
@@ -261,3 +262,40 @@ Contributions are welcome.
 Grade and credit rules live in `src/utils/gpaCalculator.ts`; curriculum parsing
 lives in `src/utils/tsvParser.ts`. Keep new logic in those modules rather than
 in components so the maths stays in one reviewable place.
+
+---
+
+## Project governance
+
+| Document | Purpose |
+| --- | --- |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Setup, conventions, checks, and review expectations |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Expected behaviour, and how to report violations |
+| [SECURITY.md](SECURITY.md) | Reporting vulnerabilities privately, and what counts as one |
+| [SUPPORT.md](SUPPORT.md) | Troubleshooting, known limitations, and scope boundaries |
+| [CHANGELOG.md](CHANGELOG.md) | Notable changes, grouped by release |
+| [TODO.md](TODO.md) | Planned work |
+
+### Reporting a vulnerability
+
+Do not open a public issue. Use GitHub's private reporting channel instead:
+<https://github.com/CSTUWU/uni-mate/security/advisories/new>.
+
+### Scope
+
+UniMate is deliberately a **static, client-only app**. There is no backend, no
+account system, and no server-side storage. Grades and curriculum live in the
+browser and in a public Google Sheet. Proposals that require a backend, or that
+move user data server-side, fall outside the project's design — please open an
+issue to discuss scope *before* building, so nobody invests in an approach that
+cannot merge.
+
+Consequently, UniMate is an unofficial self-tracking tool. It is not connected
+to the university, and its output is not an official transcript.
+
+### License
+
+Released under the [MIT License](LICENSE). Copyright © 2026 CSTUWU — Computer
+Science and Technology, Uva Wellassa University of Sri Lanka.
+
+---
